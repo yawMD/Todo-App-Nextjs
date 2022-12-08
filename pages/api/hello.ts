@@ -10,25 +10,28 @@ import { MongoClient } from "mongodb"
   res: NextApiResponse
 ) {
 
-  if(req.method==='POST'){
+  // store the TODO in a JSON file
 
-
-    const data = req.body;
-    console.log(data)
-
-    const client = await MongoClient.connect('mongodb+srv://ciscocodes:Swaress123@cluster0.fmokvne.mongodb.net/notes?retryWrites=true&w=majority')
-
-    const db = client.db();
-
-      const notesCollection = db.collection('notes')
-      const results = await notesCollection.insertOne(data)
-      console.log(results)
-      client.close();
-
-      res.status(200).json({ message: 'Sent successfully' })
-
-
-  }
+  return res.json({message: 'here'})
+  // if(req.method==='POST'){
+  //
+  //
+  //   const data = req.body;
+  //   console.log(data)
+  //
+  //   const client = await MongoClient.connect('mongodb+srv://ciscocodes:Swaress123@cluster0.fmokvne.mongodb.net/notes?retryWrites=true&w=majority')
+  //
+  //   const db = client.db();
+  //
+  //     const notesCollection = db.collection('notes')
+  //     const results = await notesCollection.insertOne(data)
+  //     console.log(results)
+  //     client.close();
+  //
+  //     res.status(200).json({ message: 'Sent successfully' })
+  //
+  //
+  // }
 }
 
 export default handler;

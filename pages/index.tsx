@@ -5,7 +5,8 @@ import Todos from "../components/Todos"
 export default function Home({}) {
   const submithandler = async(enteredText:string) =>{
     console.log(enteredText)
-    const response = await fetch('/api/hello',{
+    // You have to put in the full path of the URL
+    const response = await fetch('http://localhost:3000/api/hello',{
       method:'POST',
       body: JSON.stringify(enteredText),
       headers:{
