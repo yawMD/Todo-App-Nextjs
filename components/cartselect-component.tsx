@@ -12,7 +12,7 @@
   }
   ```
 */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 
 import { RadioGroup } from "@headlessui/react";
@@ -20,6 +20,14 @@ import {
   CurrencyDollarIcon,
   GlobeAmericasIcon,
 } from "@heroicons/react/24/outline";
+
+type ProductItem = {
+  name: string;
+  price: number;
+  quantity: number;
+};
+
+type CartItem = ProductItem;
 
 type Policy = {
   name: string;
@@ -123,6 +131,21 @@ export default function SelectCart() {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 
+  const [cart, setCart] = useState<CartItem[]>([]);
+
+  useEffect(() => {
+    const cartFromStorage = localStorage.getItem("cart");
+    if (cartFromStorage) {
+      setCart(JSON.parse(cartFromStorage) as CartItem[]);
+    }
+  }, []);
+
+  const addToCart = (item: CartItem) => {
+    const updatedCart = [...cart, item];
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
   return (
     <div className="bg-white">
       <div className="">
@@ -160,23 +183,20 @@ export default function SelectCart() {
               <h2 className="sr-only">Images</h2>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8">
-
-                  <img
-                    src='/images/burg.png'
-                    alt={'alt'}
-                    className={classNames(
-                      true
-                        ? "lg:col-span-2 lg:row-span-2"
-                        : "hidden lg:block",
-                      "rounded-lg"
-                    )}
-                  />
+                <img
+                  src="/images/burg.png"
+                  alt={"alt"}
+                  className={classNames(
+                    true
+                      ? "lg:col-span-2 lg:row-span-2 zoomable-image"
+                      : "hidden lg:block zoomable-image",
+                    "rounded-lg"
+                  )}
+                />
               </div>
             </div>
 
             <div className="lg:col-span-5">
-             
-
               {/* Product details */}
               <div className="mt-10">
                 <h2 className="text-sm font-medium text-gray-900">
@@ -190,29 +210,18 @@ export default function SelectCart() {
               </div>
 
               <div className="mt-8 border-t border-gray-200 pt-8">
-               
-
                 <form>
-            
-
-
-            <button
-              type="submit"
-              className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            >
-              Add to cart
-            </button>
-          </form>
+                  <button
+                    type="submit"
+                    onClick={() =>
+                      addToCart({ name: "BigMac", price: 5.99, quantity:3 })
+                    }
+                    className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  >
+                    Add to cart
+                  </button>
+                </form>
               </div>
-
-              {/* Policies */}
-              <section aria-labelledby="policies-heading" className="mt-10">
-                <h2 id="policies-heading" className="sr-only">
-                  Our Policies
-                </h2>
-
-              
-              </section>
             </div>
           </div>
         </div>

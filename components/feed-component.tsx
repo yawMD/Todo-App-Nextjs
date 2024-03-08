@@ -147,7 +147,7 @@ const cardinfo = [
 export default function FeedComponent() {
   return (
     <Layout>
-      <div className="m-auto w-11/12">
+      <div className="m-auto w-10/12">
         <CategoryService />
         <div className="py-4">
           <CardCase header={"National Brands"}>

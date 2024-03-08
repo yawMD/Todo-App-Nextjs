@@ -206,18 +206,19 @@ const categories = [
 
 export default function CategoryService() {
   return (
-    <div className="scroll-hidden">
-        <CardCase header={""} >
-        {categories.map((category) => (
-        <div key={category.name} className="flex flex-col items-center p-5 text-xs">
+    <div className="flex overflow-x-scroll scrollbar-hide">
+
+    {categories.map((category) => (
+      <div key={category.name} className="flex flex-col items-center w-56 md:w-56 px-6 text-xs">
           <img
+            className="w-full" 
             src={category.image}
-            alt=""
+            alt={category.name}
           />
-          <p>{category.name}</p>
-        </div>
-      ))}
-        </CardCase>
-    </div>
+        <p className="mt-2 text-center">{category.name}</p>
+      </div>
+    ))}
+  </div>
+  
   );
 }

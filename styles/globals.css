@@ -4,11 +4,27 @@
 
 /* Add this class to hide the scrollbar but keep the functionality */
 .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
-  
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari, Opera*/
-  }
-  
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.zoomable-image {
+  transition: transform 0.3s ease;
+}
+
+.zoomable-image:hover {
+  transform: scale(1.1); /* Adjust the scale value as needed */
+}
+/* In your global CSS file */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
