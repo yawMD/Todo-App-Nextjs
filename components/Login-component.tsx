@@ -21,7 +21,8 @@ export default function LoginComponent() {
       <div className="justify-center w-9/12 md:w-4/12 lg:w-3/12 m-auto flex flex-col items-center">
         <div className="pt-10">
         <p className="text-xl">{"What's your phone number or email?"}</p>
-        <input type="text" placeholder="Enter phone number or email" className="w-full my-2 p-3 bg-gray-200 rounded-lg outline-none" />
+        <input type="text" placeholder="username" className="w-full my-2 p-3 bg-gray-200 rounded-lg outline-none" />
+        <input type="password" className="w-full my-2 p-3 bg-gray-200 rounded-lg outline-none" />
         <button type="submit" name="Continue" className="w-full my-2 p-3 bg-black text-white rounded-lg outline-none">Continue</button>
         <div className="flex items-center justify-between text-xs">
             <div className="p-[0.3px] w-5/12 bg-gray-200"></div>

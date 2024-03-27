@@ -1,7 +1,7 @@
-import LoginComponent from "../../components/Login-component";
+import RegisterComponent from "../../components/Register-component";
 
 export default function Signup(){
     return (
-        <LoginComponent />
+        <RegisterComponent />
     )
 }
